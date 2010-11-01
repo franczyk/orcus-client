@@ -1,1 +1,7 @@
-Orcus Client
+Orcus Client gem
+
+This gem allows a node to get jobs and record their success/failure. 
+
+  jobEnded(server, port, nodename, chainInstance, status, output)
+
+  getJob(server, port, nodename)

@@ -1,0 +1,7 @@
+Installing the Orcus client gem:
+
+Run:
+  rake -T
+  rake gem
+  cd pkg
+  gem install orcus-<VERSION>  # Where VERSION is the version of this gem.

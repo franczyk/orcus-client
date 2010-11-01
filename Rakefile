@@ -3,7 +3,7 @@ require 'rake'
 require 'echoe'
 
 #spec = Gem::Specification.new do |s| 
-Echoe.new('orcus', '0.0.1') do |s| 
+Echoe.new('orcus', '0.0.2') do |s| 
   s.author = "Gary Franczyk"
   s.email = "gary@franczyk.com"
   s.description = "Orcus Automation Application"
