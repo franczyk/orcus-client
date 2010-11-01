@@ -7,10 +7,18 @@ module Orcus
     puts "Hello world"
   end
 
-  def self.jobEnded(hostname, chainInstance, status, output)
-    puts "Job ended."
 
-    url = URI.parse('http://localhost:3002/commands/save/bountyhunter')
+  def self.jobEnded(server, port, nodename, chainInstance, status, output)
+    # Arguments: 
+    #   server - address of machine that is running Orcus server
+    #   port - port that server is running on
+    #   nodename - machine that ran the job
+    #   chainInstance - The job number that you are completing.
+    #   status = 1 for successful, 0 for failed
+    #   output - the text output from the job
+    #
+
+    url = URI.parse('http://' + server + ':' + port.to_s + '/commands/save/' + nodename)
     request = Net::HTTP::Post.new(url.path)
     request.add_field("Content-Type", "application/xml")
 
@@ -25,7 +33,18 @@ module Orcus
     puts response.to_s
   end
 
-  def self.getJob(hostname)
+
+  def self.getJob(server, port, nodename)
+    # Arguments:
+    #   server - address of machine running orcus server
+    #   port - port that server is running on
+    #   nodename - the name of the machine that is requesting the job
+    #
+
+    url = 'http://' + server + ':' + port.to_s + '/commands/' + nodename + ".xml"
+    xml_data = Net::HTTP.get_response(URI.parse(url)).body
+    puts xml_data
+  end
 
 end
 
